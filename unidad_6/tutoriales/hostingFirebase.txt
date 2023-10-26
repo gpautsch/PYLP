@@ -1,0 +1,15 @@
+intalar node
+    https://github.com/nodesource/distributions/blob/master/README.md#debinstall
+curl -sL https://firebase.tools | bash
+sudo npm install -g firebase-tools
+firebase login    o     firebase login:ci   o 
+        firebase login --reauth
+        firebase projects:list
+firebase init
+
+// antes de hacer el deploy copiar index.html y app.js al dir "public"
+firebase deploy
+
+
+
+https://ejemplomti2022.web.app/
