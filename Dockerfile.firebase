@@ -3,7 +3,7 @@ FROM php:7.2-apache
 # COPY unidad_6 /var/www/html/
 
 # Instalando node
-RUN curl --silent --location https://deb.nodesource.com/setup_12.x | bash - \
+RUN curl --silent --location https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install --yes nodejs \
     && apt-get install --yes build-essential
 
