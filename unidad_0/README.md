@@ -21,7 +21,7 @@ _\* recomendacion de la catedra_
 ```sh
 # ubicarse en el directorio donde se desea clonar el repositorio
 # cd <path> ej:
-
+ 
 cd /home/projects
 
 ## clonar el reposotorio
