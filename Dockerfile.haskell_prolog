@@ -19,7 +19,7 @@ RUN apt-get install -y \
     
 
 # Instalando node
-RUN curl --silent --location https://deb.nodesource.com/setup_12.x | bash - \
+RUN curl --silent --location https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install --yes nodejs \
     && apt-get install --yes build-essential
 
