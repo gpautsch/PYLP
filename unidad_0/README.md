@@ -8,39 +8,30 @@
 
 _\* recomendacion de la catedra_
 
-## 1. crearse un fork del repositorio y clonar
+## 1. clonarse el repositorio
 
 1. Lo primero que deberá hacer es registrarse en github. Para hacerlo puede seguir el siguiente [tutorial](https://www.youtube.com/watch?v=RKXk_nc7icg). _(si ya posee una cuenta puede omitir este paso)_
 
-2. Lo siguiente que debe hacer es crearse un fork del repositorio, para ello ingrese a la siguiente sitio: https://github.com/PYLP-UNaM/PYLP
-   haga click en el boton fork _(ver imagen)_ y siga las instrucciones.
-   esto creara una copia del repositorio en su cuenta.
-
-![fork](../img/fork.png)
-
-3. Una vez terminado el fork, ud. tendrá una copia del repositorio en su cuenta, es éste repositorio con el cuál Ud. trabajará de manera local.
-
-4. Para clonarse el repositorio en su maquina local. debe copiarse la url del repositorio. presionando el boton Code y el boton copiar. _(ver imagen)_
+2. Para clonarse el repositorio en su maquina local. debe copiarse la url del repositorio. presionando el boton Code y el boton copiar. _(ver imagen)_
 
 ![clone](../img/clone.png)
 
-5. una vez copiada la url, en una terminal debe ubicarse en la carpeta donde desea trabajar con el repositorio. y ejecutar el siguiente comando.
+3. una vez copiada la url, en una terminal debe ubicarse en la carpeta donde desea trabajar con el repositorio. y ejecutar el siguiente comando.
 
 ```sh
 # ubicarse en el directorio donde se desea clonar el repositorio
 # cd <path> ej:
-
+ 
 cd /home/projects
 
 ## clonar el reposotorio
 ## git clone <url_copiada>
 ## url ~ https://github.com/suUsuario/PYLP
 
-git clone https://github.com/SuichiM/PYLP
+git clone https://github.com/gpautsch/PYLP.git
 ```
-### porque usamos fork? 
 
-aca una explicación de como se contribuye en el mundo OS 👉 [video](https://www.youtube.com/watch?v=QntLv5BjUr0&feature=youtu.be)
+4. Es necesario solicitar al equipo de catedra la adhesion al team de la cohorte correspondiente para tener acceso y poder contribuir con el repositorio.
 
 ## 1. Instalar docker ([¿Que es docker?](https://docs.docker.com/engine/))
 
