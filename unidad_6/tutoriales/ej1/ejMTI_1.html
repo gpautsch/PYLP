@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer Ejemplo Firebase</title>
+</head>
+<body>
+    <!-- PASO 1 -->  
+    <h1 id ="holaMundo"> </h1>    
+    
+    <!-- PASO 2 -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyCJFDI8QQYSsB94MBBrtOo6o",
+          authDomain: "pylp.firebaseapp.com",
+          databaseURL: "https://pylp2.firebaseio.com",
+          projectId: "pylp",
+          storageBucket: "pylp2.appspot.com",
+          messagingSenderId: "15996538",
+          appId: "1:15930538:web:4c1e834d8ca8e7083"
+      };
+      firebase.initializeApp(config);
+    
+      // PASO 3 //
+      var holaMundo = document.getElementById('holaMundo');
+      
+      // PASO 4 //
+      
+      var dbRef = firebase.database().ref().child('text');
+      
+      /*PASO 5
+        En firebase/Realtime creamos un atributo con la clave 'text' y el valor “Hola Mundo”. 
+      */
+      
+      //PASO 6//
+      dbRef.on('value', snap => holaMundo.innerText = snap.val());
+      
+      /*PASO 7
+        Guardamos y abrimos en el navegador (VM: clic derecho Open liveServer).
+      */
+
+    </script>
+
+</body>
+</html>

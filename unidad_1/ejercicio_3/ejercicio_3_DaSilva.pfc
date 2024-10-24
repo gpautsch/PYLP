@@ -1,0 +1,44 @@
+program NumerosPrimos;
+
+process type numerosPrimos(inicio:integer; fin:integer; proceso:integer);
+var
+	p,i,j,primo: integer;
+begin
+
+	
+		for	i:=inicio to fin do
+		begin
+			primo:= 0;
+			for	j:=1 to i do
+			begin
+				if (i mod j = 0) then
+			begin
+				primo:= primo + 1;
+			end;
+			end;
+			if (primo=2) then
+			begin
+				writeln('Proceso Número:', proceso, ' - ', 'Número Primo: ', i);
+			end;
+		end;
+	
+end;
+
+var
+	p1,p2: numerosPrimos; 
+  	inicio_p1,inicio_p2,fin_1,fin_2:integer;
+begin
+	writeln('ingrese un número de inicio para el Proceso 1:');
+		readln(inicio_p1);
+		writeln('ingrese un número de fin para el Proceso 1:');
+		readln(fin_1);
+	writeln('ingrese un número de inicio para el Proceso 2:');
+		readln(inicio_p2);
+		writeln('ingrese un número de fin para el Proceso 2:');
+		readln(fin_2);
+
+	cobegin
+		p1(inicio_p1,fin_1,1);
+		p2(inicio_p2,fin_2,2);
+	coend;
+end.

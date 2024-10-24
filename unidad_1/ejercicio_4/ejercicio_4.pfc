@@ -1,0 +1,67 @@
+program ProductoEscalar;
+const LNG = 9;
+const N = 5;
+type 
+	vector = array [0..LNG] of integer;
+
+var
+	i:integer;
+	resultado:integer;
+	v1, v2:vector;
+
+procedure cargar_vectores;
+begin
+	for i := 0 to LNG do
+	begin
+		v1[i] := i ;
+		v2[i] := LNG - i ; 
+	end;
+
+	writeln('vector 1');
+	for i := 0 to LNG do
+	begin
+		write(v1[i], ' - ');
+	end;
+	writeln;
+	writeln;
+	writeln('vector 2');
+	for i := 0 to LNG do
+	begin
+		write(v2[i], ' - ');
+	end;
+	writeln;
+	writeln;
+end;
+
+process type PRODUCTO(rango:integer; var s:semaphore);
+var
+	ini,fin,j,local:integer;
+begin
+	ini := rango*N;
+	fin := (rango*N + N)-1;
+
+	for j := ini to fin do
+	begin	
+		
+		local:=v1[j] * v2[j];
+		wait(s);
+		resultado:=resultado+local;
+		writeln(rango, ': j=',j,' (', v1[j], '*', v2[j], ')=', local, ' + ');
+		signal(s);
+	end;
+end;
+
+var
+  p1,p2:PRODUCTO;
+  sem: semaphore; 
+begin
+
+	initial(sem,1);
+	resultado:=0;
+	cargar_vectores;
+  cobegin
+     p1(0, sem);
+     p2(1, sem);
+   coend;
+   writeln('El producto final es: ',resultado);
+end.

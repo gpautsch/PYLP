@@ -16,13 +16,13 @@ _\* recomendacion de la catedra_
    haga click en el boton fork _(ver imagen)_ y siga las instrucciones.
    esto creara una copia del repositorio en su cuenta.
 
-![fork](./img/fork.png)
+![fork](../img/fork.png)
 
 3. Una vez terminado el fork, ud. tendrá una copia del repositorio en su cuenta, es éste repositorio con el cuál Ud. trabajará de manera local.
 
 4. Para clonarse el repositorio en su maquina local. debe copiarse la url del repositorio. presionando el boton Code y el boton copiar. _(ver imagen)_
 
-![clone](./img/clone.png)
+![clone](../img/clone.png)
 
 5. una vez copiada la url, en una terminal debe ubicarse en la carpeta donde desea trabajar con el repositorio. y ejecutar el siguiente comando.
 
@@ -38,6 +38,9 @@ cd /home/projects
 
 git clone https://github.com/SuichiM/PYLP
 ```
+### porque usamos fork? 
+
+aca una explicación de como se contribuye en el mundo OS 👉 [video](https://www.youtube.com/watch?v=QntLv5BjUr0&feature=youtu.be)
 
 ## 1. Instalar docker ([¿Que es docker?](https://docs.docker.com/engine/))
 
@@ -47,6 +50,8 @@ se recomienda utilizar una distribución de linux e [instalar usando el reposito
 
 Si siguó las recomendaciones e instalo en linux y con el repositorio. revisar estos pasos de [post-instalacion.](https://docs.docker.com/engine/install/linux-postinstall/)
 
+acá un **tutorial de como instalar docker** en linux: 👉 [tutorial](https://www.youtube.com/watch?v=JwqkjKkEIDw&feature=youtu.be)
+
 ## 2. Instalar docker-compose ([¿Qué es y porqué usar docker-compose?](https://docs.docker.com/compose/))
 
 [Instalar compose](https://docs.docker.com/compose/install/)
@@ -55,9 +60,9 @@ Si siguó las recomendaciones e instalo en linux y con el repositorio. revisar e
 
 [Instalar VS Code](https://code.visualstudio.com/)
 
-### 3.1 plugins recomendados
+### 3.1 Instalar los siguientes plugins de VS Code
 
-- Docker
+- Docker (**Microsoft**) v1.5.0+
 
 ## 4. Correr los container de la raiz
 

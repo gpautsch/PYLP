@@ -1,0 +1,40 @@
+program ejercicio_4;
+const 
+  N = 10; NP  = 2; LNG = 19;
+
+type  myArray = array[0..LNG] of integer;
+
+var 
+  array1 : myArray;
+
+process type cargar_vector(rango : integer; var sem: semaphore);
+var 
+  j, posInicial: integer;
+begin
+  posInicial := rango*N;
+  wait(sem);
+  for j := posInicial to posInicial+N-1 do
+  begin
+    
+    writeln('soy ', rango, 'cargando ', j);
+    array1[j] := rango;
+  end;
+  signal(sem);
+  
+
+end;
+
+var
+  i:integer;
+  p0, p1 : cargar_vector;
+  s: semaphore;
+begin
+  initial(s, 1);
+  cobegin
+    p0(0, s);
+    p1(1, s);      
+  coend;
+
+  for i := 0 to LNG do
+    write(array1[i], ' - ');
+end.

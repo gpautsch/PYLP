@@ -25,4 +25,4 @@ pfc2int <myFile.obj>
 
 ## Escribiendo codigo
 
-[Referencias rapidas](./RESUMEN.MD)
+[Referencias rapidas](../docs/RESUMEN_PASCALFC.MD)

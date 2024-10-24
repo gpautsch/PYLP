@@ -1,4 +1,4 @@
 *.obj
 *.lst
-
+.vscode
 **/node_modules/

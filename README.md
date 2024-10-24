@@ -4,7 +4,7 @@ Repositorio oficial de la práctica de la cátedra Paradigmas y Lenguajes de Pro
 
 ## Equipo de cátedra
 
-| Cargo                               |Nombre                               |
+| Cargo                               | Nombre                              |
 | ----------------------------------- | ----------------------------------- |
 | Responsable de Teoria (Adjunto)     | Mgter. Pautsch, Jesús Germán Andrés |
 | Responsable de Práctica (Ayte 2da.) | Lic. Martini, Roque Esteban         |
@@ -13,6 +13,18 @@ Repositorio oficial de la práctica de la cátedra Paradigmas y Lenguajes de Pro
 
 Martini Esteban
 [github](https://github.com/SuichiM) [twitter](https://twitter.com/SuichiM)
+
+## Preparando el entorno
+
+[guia para preparar el entorno](./unidad_0/README.md)
+
+## Lineamientos para la entrega de los ejercicios
+
+[Lineamientos](./docs/lineamientos_entrega.md)
+
+## Lineamientos sobre la producción de los video tutoriales
+
+[Lineamientos](./docs/lineamientos_video.md)
 
 ## Acerca del Repositorio
 

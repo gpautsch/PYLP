@@ -1,12 +1,12 @@
 # Referencias Rapidas
 
 Esta es una referencia ultra liviana de los componentes principales de PascalFC debe descartarse como referencia principal para cualquier busqueda profunda referirse a:
-  - [Manual del Lenguaje](./docs/)
-  - [Guía de Usuario](./docs/)
+  - [Manual del Lenguaje](./pascal-fc_manualdelenguaje.pdf)
+  - [Guía de Usuario](./pascal-fc_guiaUsuario.pdf)
 
 # Ciclo de vida de un proceso
 
-![](./img/process_lifecycle.png)
+![](../img/process_lifecycle.png)
 
 ## creación
 

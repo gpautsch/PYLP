@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--SOURCE DE BOOTSTRAP: https://getbootstrap.com-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- The core Firebase JS SDK is always required and must be listed first 
+    -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries 
+    -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAbYt6v2KKozICBx8nyGAUw",
+    authDomain: "amigosdelpadel.firebaseapp.com",
+    databaseURL: "https://amigosdelpadel.firebaseio.com",
+    projectId: "amigosdelpadel",
+    storageBucket: "amigosdelpadel.appspot.com",
+    messagingSenderId: "4555506",
+    appId: "1:45505506:web:8d153eb7bd9d1511b",
+    measurementId: "G-EWDNYWY"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+
+</head>
+<body>
+    <h1>Registro y Login</h1>
+   
+    <!--CREAMOS UN BLOQUE PARA AGRUPAR CODIGO (Barra de Navegacion - navbar) COPIADO DE BOOTSTRAP-->   
+    <!--mt: MARGEN TOP-->
+    <div class="container mt-3">
+      <!--LUEGO DE ELEGIR EL OBJETO PODEMOS PERSONALIZARLO (MARGEN DERECHO - SCHEMES COLOR)-->
+      <nav class="navbar navbar-dark bg-primary"">
+        <a class="navbar-brand">Navegación</a>
+        <!--CAMBIAMOS EL FORM POR UN DIV  LINEA ORIGINAL "<form class="form-inline">"-->
+        <div class="form-inline">
+          <!--ASOCIAMOS EL class="form-control mr-sm-2" A NUESTROS INPUT-->
+          <input id="email2" type="text" placeholder="ingrese email:" class="form-control form-control-sm mr-sm-2"> 
+          <input id="clave2" type="password" placeholder="ingrese clave:" class="form-control form-control-sm mr-sm-2">
+          <button class="btn btn-dark my-2 my-sm-0 btn-sm" onclick="ingresar()">Acceder</button>
+          <button class="btn btn-danger my-2 my-sm-0 btn-sm ml-2" onclick="registrar()" data-toggle="modal" data-target="#exampleModal">Registrar</button>
+        </div>
+      </nav>
+   </div>
+   
+  <!-- CUADRO MODAL COPIADO DE BOOTSTRAP -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Formulario de Registro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--AQUI VAN LOS INPUT BOX-->
+        <input id="email" type="text" placeholder="ingrese email:" class="form-control form-control-sm mr-sm-2"> 
+        <div class = 'mt-2'></div>
+        <input id="clave" type="password" placeholder="ingrese clave:" class="form-control form-control-sm mr-sm-2">
+      </div>
+      <div class="modal-footer">
+        <!--AQUI VAN LOS BOTONES-->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="registrar()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+   
+    <div id="contenido">
+      
+    </div>
+    <!--IMPORT DE JQUERY PARA POPUP Y CUADROS DE DIALOGO-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <script src="appLogin.js"></script>
+
+
+
+
+
+
+</body>
+</html>

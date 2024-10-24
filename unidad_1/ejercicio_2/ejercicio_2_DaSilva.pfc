@@ -1,0 +1,45 @@
+program HolaMundo2;
+
+process type imprimirPares(cant:integer);
+var
+	x:integer;
+	num:integer;
+begin
+	num:=2;
+	for	x:=1 to cant do
+	begin	
+		writeln('P - generado: ',num);
+		num:=num+2;
+	end;
+end;
+
+process type imprimirImpares(cant:integer);
+var	
+	x:integer;
+	num:integer;
+begin
+	num:=1;
+	for	x:=1 to cant do
+	begin
+		writeln('I - generado: ',num);
+		num:=num+2;
+	end;	
+end;
+
+var
+  p1,p2: imprimirPares; 
+  cPares:integer;
+	cImpares:integer;
+	p3: imprimirImpares;
+begin
+	writeln('ingrese la cantidad de nros Pares:');
+	readln(cPares);
+	writeln('ingrese la cantidad de nros Impares:');
+	readln(cImpares);
+	cobegin
+		p1(cPares);
+		p2(cPares);
+		p3(cImpares);
+	coend;
+   
+end.

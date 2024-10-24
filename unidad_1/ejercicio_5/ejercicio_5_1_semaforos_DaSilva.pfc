@@ -1,0 +1,19 @@
+program ejericio_1;
+
+process type printId(rango:integer; var s:semaphore);
+begin
+  wait(s);
+  writeln('soy el proceso', rango);
+  signal(s);
+end;
+
+var
+  p1, p2: printId;
+  sem: semaphore;
+begin 
+  initial(sem, 1);
+  cobegin
+    p1(1, sem);
+    p2(2, sem);
+  coend;
+end.
