@@ -10,7 +10,7 @@ _\* recomendacion de la catedra_
 
 ## 1. clonarse el repositorio
 
-1. Lo primero que deberá hacer es registrarse en github. Para hacerlo puede seguir el siguiente [tutorial](https://www.youtube.com/watch?v=RKXk_nc7icg). _(si ya posee una cuenta puede omitir este paso)_
+1. Lo primero que deberá hacer es registrarse en github. Para hacerlo puede seguir el siguiente [tutorial](https://www.youtube.com/watch?v=C0oezL3lBUk). _(si ya posee una cuenta puede omitir este paso)_
 
 2. Para clonarse el repositorio en su maquina local. debe copiarse la url del repositorio. presionando el boton Code y el boton copiar. _(ver imagen)_
 
