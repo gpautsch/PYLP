@@ -1,0 +1,215 @@
+2010/03/31: v0.9.35
+	Compiler hangs when no main 'begin/end' was defined
+	Problems with detection of end-of-file condition solved
+
+2008/06/21: v0.9.34
+	Added new procedures:
+		-clreol: Clear line till end of line. Cursor remains.
+		-delline: Delete the line the cursor is on.
+		-insline: Insert a new line at the cursor position.
+	Corrected a few discrepancies
+
+2008/05/14: v0.9.33
+	Error in PMD file creation - it is now derived in pfc2int as it
+	should've been in the first place.
+	Included the CRT library to assure compatibility with different
+	screens.
+
+2007/04/22: v0.9.32
+	PMD filename is now adapted to the source/object filename's
+	root + .pmd
+
+2006/06/20: v0.9.31
+	Added option (-1) to pfc2int, which, if enabled, causes
+	pfc2int to do a single run of the program (instead of asking
+	to re-run). This is mainly for the GUI.
+
+	Modified the listing header 'Error diagnostics' to
+	'Error codes found'.
+
+2006/06/03: v0.9.30
+	Error in the error reporting routine... 'errs' was doubly
+	defined, so the errorset was always seen as empty in the
+	errormsg routine.
+
+	Moved the memory overflow reporting to pfc2_err.
+
+	Removed duplicate error reporting.
+
+	Added a Makefile.
+
+	Reformatted the Symbol table listing (more compact)
+
+	Adding a trace option to pfc2int (adding -t on the command line
+	all executed p-codes will be shown.
+
+	Corrected an error which only showed on resources.
+
+2006/04/21: v0.9.29
+	Free Pascal changed policy and does not allow inter-procedure
+	goto's anymore. This caused a LOT of problems in the compiler
+	part, where many panic jumps went from the respective parser
+	routines to the block exit, with a goto 99;
+        
+	I've changed many routines (hundred of lines) to make those
+	panic exits more structured. Most of the procedure have been
+	changed to functions and return true only if successful.
+	With the corresponding if's on calling those functions, exiting
+	means filtering down using exits from each.
+
+	Error messages from the compiler in separate unit, with the
+	messages in an array to eliminate the large 'case'.
+
+2004/04/14: v0.9.28
+	Made statmax (max number of statements to be executed before 
+	livelock detected) modifiable - use max_statements(N) to set
+	a new number.
+
+	Increased several constants:
+		smax -> 3000
+		maxmons -> 20
+		maxcapsprocs -> 15;
+
+2003/05/28: v0.9.27
+	Modified constants:
+		tmax 150 -> 250 (Symbol table size)
+		amax 20 -> 40 (Array table size)
+		casemax 20 -> 50 (Alternatives in case and select)
+		chanmax 20 -> 50 (Max number channels)
+		rmax 50 -> 100 (Real constants)
+		
+		stmax 5000 -> 12000
+		pmax 20 -> 50
+
+	Added new procedures:
+		readkey (gets one keypress)
+		keypressed (returns true if a key is pressed)
+
+	Added possibility to define 'char constants' with the
+	turbo/borland pascal convention #ddd, where ddd is the 
+	decimal value.
+
+2003/04/27: v0.9.26
+	Added 'textcolor' and 'textbackground' sentences
+
+2002/04/25: v0.9.24
+2002/04/22: v0.9.25
+	Adding gotoxy and clrscr
+
+2002/04/21: v0.9.23
+	Real constant problem solved (in pfc2.pp: enterreal).
+
+	write problem: first character to be printed seems to be a space?
+	Or is this after a clrscr?
+
+	BIG: unary minus doesn't work (only for reals)! (Solved: added a
+	new opcode for real negates)
+
+2002/03/21: 0.9.22
+	Problem in pfc2: when declaring more than 4 constants, the compiler
+	hangs... No error messages. (Solved)
+
+	Strange:
+
+	820             rconst[r+1] := x;
+	(gdb) print RCONST[0]
+	$5 = 0
+	(gdb) print R
+	$6 = 0
+	(gdb) print X
+	$7 = 0.29999999999999999
+	(gdb) next
+	821             realindex := 1;
+	(gdb) print RCONST[0]
+	$8 = 0.29999999999999999
+	(gdb) print R
+	$9 = 0
+	(gdb) print X
+	$10 = 0.29999999999999999
+
+	  realarray = array[1..rmax] of real;
+	  rconst: realarray;
+	
+	Is this because of C 0-based arrays? Apparently not:
+	
+	822             while rconst[realindex] <> x do
+	(gdb)
+	823               realindex := + 1;
+	(gdb) print RCONST[REALINDEX]
+	$15 = 0.80000000000000004
+	(gdb) print REALINDEX
+	$16 = 1
+	(gdb) print RCONST[REALINDEX-1]
+	$17 = 0.29999999999999999
+
+	Seems the [r+1] index doesn't work!
+
+	This is the asm code:
+	
+	0x805d890 <ENTERREAL>:  push   %ebp
+	0x805d891 <ENTERREAL+1>:        mov    %esp,%ebp
+	0x805d893 <ENTERREAL+3>:        sub    $0x4,%esp
+	0x805d896 <ENTERREAL+6>:        mov    0x8075f00,%eax
+	0x805d89b <ENTERREAL+11>:       cmp    $0x31,%eax
+	0x805d89e <ENTERREAL+14>:       je     0x805d8a2 <ENTERREAL+18>
+	0x805d8a0 <ENTERREAL+16>:       jmp    0x805d8ae <ENTERREAL+30>
+	0x805d8a2 <ENTERREAL+18>:       push   $0xa
+	0x805d8a4 <ENTERREAL+20>:       pushl  0x8(%ebp)
+	0x805d8a7 <ENTERREAL+23>:       call   0x805bf60 <FATAL>
+	0x805d8ac <ENTERREAL+28>:       jmp    0x805d917 <ENTERREAL+135>
+		rr := r + 1;
+	0x805d8ae <ENTERREAL+30>:       mov    0x8075f00,%eax
+	0x805d8b3 <ENTERREAL+35>:       inc    %eax
+	0x805d8b4 <ENTERREAL+36>:       mov    %eax,0xfffffffc(%ebp)
+		rconst[rr] := x;
+	0x805d8b7 <ENTERREAL+39>:       mov    0xfffffffc(%ebp),%eax
+	0x805d8ba <ENTERREAL+42>:       mov    0xc(%ebp),%edi
+	0x805d8bd <ENTERREAL+45>:       mov    %edi,0x8075d68(,%eax,8)
+	0x805d8c4 <ENTERREAL+52>:       mov    0x10(%ebp),%edi
+	0x805d8c7 <ENTERREAL+55>:       mov    %edi,0x8075d6c(,%eax,8)
+		realindex := 1;
+	0x805d8ce <ENTERREAL+62>:       movl   $0x1,0x807616c
+	0x805d8d8 <ENTERREAL+72>:       jmp    0x805d8e4 <ENTERREAL+84>
+		realindex := 1;
+	0x805d8da <ENTERREAL+74>:       movl   $0x1,0x807616c
+	0x805d8e4 <ENTERREAL+84>:       mov    0x807616c,%eax
+		while rconst[realindex] <> x do
+	0x805d8e9 <ENTERREAL+89>:       fldl   0x8075d68(,%eax,8)
+	0x805d8f0 <ENTERREAL+96>:       fldl   0xc(%ebp)
+	0x805d8f3 <ENTERREAL+99>:       fcompp
+	0x805d8f5 <ENTERREAL+101>:      fnstsw %ax
+	0x805d8f7 <ENTERREAL+103>:      sahf
+	0x805d8f8 <ENTERREAL+104>:      jne    0x805d8da <ENTERREAL+74>
+	0x805d8fa <ENTERREAL+106>:      jmp    0x805d8fc <ENTERREAL+108>
+	0x805d8fc <ENTERREAL+108>:      mov    0x807616c,%eax
+	0x805d901 <ENTERREAL+113>:      cmp    0x8075f00,%eax
+	0x805d907 <ENTERREAL+119>:      jg     0x805d90b <ENTERREAL+123>
+	0x805d909 <ENTERREAL+121>:      jmp    0x805d917 <ENTERREAL+135>
+	0x805d90b <ENTERREAL+123>:      mov    0x807616c,%edi
+	0x805d911 <ENTERREAL+129>:      mov    %edi,0x8075f00
+	0x805d917 <ENTERREAL+135>:      leave
+	0x805d918 <ENTERREAL+136>:      ret    $0xc
+	0x805d91b <ENTERREAL+139>:      nop
+	0x805d91c <ENTERREAL+140>:      lea    0x0(%esi,1),%esi
+	
+	Other problem:
+	
+	End of line isn't recognized as a separator! Must return at least a
+	space char or something when reading in a new line.
+	
+2002/04/20: 0.9.22
+
+	FPC: This error is DOS only???
+
+	Runtime error 100 at 0x08049A4B
+	  0x08049A4B
+	  0x080482E1
+	  0x0805DFED
+	  0x08064AAD
+	  0x080480B0
+	  0x00000000
+
+
+	FPC: bitsets:
+	  defined: <= and >=, but not in docs.
+	  easy to define? > and <
