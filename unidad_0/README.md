@@ -61,8 +61,8 @@ en una terminal desde la raiz de este repo ejecutar:
 
 ```bash
 # para levantar los containers
-$ docker-compose up
+$ docker compose up
 
 # para parar los containers
-docker-compose stop
+docker compose stop
 ```
